@@ -21,14 +21,14 @@ def create(args):
         markdown.write(f'|{f["title"]}|{f["poc"]}|{f["cvssv3"]}\n')
 
     markdown.close()
-    log.info(f"Guardado en {file_path}")
+    log.warning(f"Guardado en {file_path}")
 
 
 def run(args):
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description="Obtiene el listado de vulnerabilidades y lo exporta a un markdown.")
     parser.add_argument('-u','--username', type=str, required=False)
     parser.add_argument('-p','--password', type=str, required=False)
     parser.add_argument('-i','--id', type=str, help='Audit Id')
-    parser.add_argument('--url', required=False)
+    parser.add_argument('--url', required=False, help="Url de la API de PwnDoc.")
     parse_args = parser.parse_args(args)
     create(parse_args)

@@ -19,7 +19,7 @@ class Logger:
 
 
 
-    def get_formatter(self, name:str, color:str):
+    def get_formatter(self, name:str, color:str='green'):
         #COLORS = ['green', 'yellow', 'blue',  'cyan', 'white']
         formatter = colorlog.ColoredFormatter(
                 fmt=f"%(log_color)s%(asctime)s %(message)s",

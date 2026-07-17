@@ -1,10 +1,13 @@
 import requests
 import json
 import os
+from dotenv import load_dotenv
 from utils.logger import Logger
+
 
 class PwnDoc:
     def __init__(self, args):
+        load_dotenv()
         self._log = Logger("PwnDoc")
         
         if not args.username:
@@ -18,7 +21,23 @@ class PwnDoc:
 
         self._username = args.username
         self._password = args.password
+        error = False
 
+        if self._username is None:
+            self._log.error("Debes especificar el nombre de usuario")
+            error = True
+
+        if self._password is None:
+            self._log.error("Debes especificar la contraseña del usuario")
+            error = True
+
+        if args.url is None:
+            self._log.error("Debes especificar la URL de pwndoc")
+            error = True
+
+        if error == True:
+            raise Exception("Error en la autenticación")
+        
         api = args.url
 
         self._login = f'{api}/users/token'
