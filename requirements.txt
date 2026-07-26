@@ -1,3 +1,9 @@
 requests
 colorlog
 python-dotenv
+flask
+sqlalchemy
+PyExifTool
+playwright
+beautifulsoup4
+pillow
