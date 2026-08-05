@@ -77,3 +77,9 @@ class PwnDoc:
         response = self._dog_get(self._audit.format(id=id))
         findings = response.json()["datas"]["findings"]
         return findings
+
+    def get_audits(self):
+        response = self._dog_get(self._audits)
+        findings = response.json()["datas"]
+        return findings
+    
